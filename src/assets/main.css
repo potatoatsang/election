@@ -1,0 +1,28 @@
+@import './base.css';
+
+#app {
+  display: flex;
+  flex-flow: column;
+  min-height: 100%;
+  background-color: var(--color-theme-background);
+  /*background: linear-gradient(to right,
+   var(--color-theme-blue-green), 
+   var(--color-theme-green), 
+   var(--color-theme-blue));*/
+
+  /*background-image: url('/images/layout/bg_light.png'), url('/images/layout/bg.png');
+    background-position: left top, left bottom 100%;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 100%, 100% 100%;
+    background-blend-mode: screen;*/
+}
+
+/*@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}*/
+
+@media (max-width: 720px) {
+
+}
