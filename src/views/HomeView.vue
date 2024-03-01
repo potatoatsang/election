@@ -31,18 +31,18 @@ const isPreload = ref(true);
 const preloadProgress = ref(0);
 const preloadImages = () => {
   const imageUrls = [
-    '/favicon.png',
-    '/images/slogan.png',
-    '/images/candidate/A0_home.png',
-    '/images/candidate/A1.png',
-    '/images/candidate/A1_back.png',
-    '/images/candidate/A1_icon.png',
-    '/images/candidate/A2.png',
-    '/images/candidate/A2_back.png',
-    '/images/candidate/A2_icon.png',
-    '/images/candidate/A3.png',
-    '/images/candidate/A3_back.png',
-    '/images/candidate/A3_icon.png',
+    './favicon.png',
+    './images/slogan.png',
+    './images/candidate/A0_home.png',
+    './images/candidate/A1.png',
+    './images/candidate/A1_back.png',
+    './images/candidate/A1_icon.png',
+    './images/candidate/A2.png',
+    './images/candidate/A2_back.png',
+    './images/candidate/A2_icon.png',
+    './images/candidate/A3.png',
+    './images/candidate/A3_back.png',
+    './images/candidate/A3_icon.png',
   ];
   const totalImages = imageUrls.length;
   let loadedImages = 0;
@@ -80,7 +80,7 @@ const preloadImages = () => {
 onMounted(() => {
   preloadImages();
   gameStore.init();
-  gameStore.apiVisitor();
+  //gameStore.apiVisitor();
 });
 </script>
 

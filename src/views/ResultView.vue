@@ -46,7 +46,7 @@ const copyToClipboard = () => {
 };
 
 const handleClickShare = () => {
-  gameStore.apiShare();
+  //gameStore.apiShare();
 };
 
 const percentageA1 = ref('0%');
@@ -60,7 +60,8 @@ onMounted(async () => {
     return;
   }
 
-  await gameStore.apiAddqares();
+  //await gameStore.apiAddqares();
+  gameStore.getElectionResult();
   setTimeout(()=>{
     percentageA1.value = electionResult.value.percentage.A1;
     percentageA2.value = electionResult.value.percentage.A2;

@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress'; 
 import 'nprogress/nprogress.css';
 
-const router = createRouter({
-  history: createWebHistory(),
+const router = createRouter({ 
+  history: createWebHistory(process.env.NODE_ENV === 'production' ? '/election/': ''),
   routes: [
     {
       path: '/',

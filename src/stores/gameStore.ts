@@ -95,7 +95,7 @@ export const useGameStore = defineStore({
       });
     },
     async apiAddqares() {
-    const logStore = this.logStore;
+      const logStore = this.logStore;
       const setElectionResult = this.setElectionResult;
       const targetContent = { ...this.ansResults };
       const request = {
@@ -112,6 +112,28 @@ export const useGameStore = defineStore({
         logStore('ERROR', error);
       })
     },
+    getElectionResult() {
+      let result: any = {
+        'percentage': {
+          'A1': 0,
+          'A2': 0,
+          'A3': 0,
+        },
+        'finalCandidate': '',
+        'shareCount': 99999
+      };
+      for (const key in this.ansResults) {
+        const answer = this.ansResults[key];
+        result.percentage[answer] += 10;
+      } 
+      for (const key in result.percentage) {
+        result.percentage[key] = result.percentage[key] + '%';
+      }
+   
+      result.finalCandidate = 
+      console.log(result);
+      this.setElectionResult(result);
+    },
     setData(questions: Question[], references: Reference[]){
       this.questions = questions;
       this.references = references;
@@ -123,12 +145,12 @@ export const useGameStore = defineStore({
       this.electionResult.visitorCount = result;
     },
     setElectionResult(result: ElectionResult) {
-      this.isLoading = false;
       this.electionResult.percentage = result.percentage;
       this.electionResult.finalCandidate = result.finalCandidate;
       this.electionResult.shareCount = result.shareCount;
       this.electionResult.originCandidateName =  this.getCandidateName(this.candidateId);
       this.electionResult.finalCandidateName =  this.getCandidateName(this.electionResult.finalCandidate);
+      this.isLoading = false;
     },
     getCandidateName(candidateId: string) {
       let candidateName = '';

@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
   },
-  base: '/',
+  base: process.env.NODE_ENV === 'production' ? '/election/': '/',
   publicDir: 'public',
   plugins: [
     vue(),
