@@ -122,15 +122,42 @@ export const useGameStore = defineStore({
         'finalCandidate': '',
         'shareCount': 99999
       };
-      for (const key in this.ansResults) {
-        const answer = this.ansResults[key];
-        result.percentage[answer] += 10;
-      } 
-      for (const key in result.percentage) {
-        result.percentage[key] = result.percentage[key] + '%';
+
+      // 計算每個答案的出現次數
+      Object.values(this.ansResults).forEach(answer => {
+        if (result.percentage[answer] !== undefined) {
+          result.percentage[answer] += 10;
+        }
+      });
+
+      // 尋找最大值和對應的鍵
+      let maxValue = 0;
+      let maxKey = '';
+      Object.keys(result.percentage).forEach(key => {
+        if (result.percentage[key] > maxValue) {
+          maxValue = result.percentage[key];
+          maxKey = key;
+        }
+      });
+
+      // 判斷是否有多個最大值
+      let maxKeys = Object.keys(result.percentage).filter(key => result.percentage[key] === maxValue);
+      if (maxKeys.length > 1) {
+        if(maxKeys.includes(this.candidateId)) {
+          result.finalCandidate = this.candidateId; //偏向選擇的候選人優先
+        }
+        else {
+          result.finalCandidate = 'A0'; //不偏向特定候選人
+        }
+      } else {
+        result.finalCandidate = maxKey; //偏向特定候選人
       }
-   
-      result.finalCandidate = 
+
+      //將計數轉換為百分比格式
+      Object.keys(result.percentage).forEach(key => {
+        result.percentage[key] = `${result.percentage[key]}%`;
+      });
+    
       console.log(result);
       this.setElectionResult(result);
     },

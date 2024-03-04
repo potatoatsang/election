@@ -254,7 +254,7 @@ onMounted(async () => {
     
       .result_img {
         display: flex;
-        background-color: white;
+        background-color: var(--color-theme);
         position: relative;
         padding: 10px;
         padding-bottom: 0;
