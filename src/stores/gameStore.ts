@@ -157,6 +157,7 @@ export const useGameStore = defineStore({
       Object.keys(result.percentage).forEach(key => {
         result.percentage[key] = `${result.percentage[key]}%`;
       });
+      this.setElectionResult(result)
     },
     setData(questions: Question[], references: Reference[]){
       this.questions = questions;
