@@ -174,7 +174,7 @@ onMounted(async () => {
                       number_three: answer.id === 'A3',
                       active: ansResults[question.id] === answer.id
                     }">
-                  <div class="candidate_icon"><img :src="`/images/candidate/${answer.id}_icon.png`"></div>
+                  <div class="candidate_icon"><img :src="`./images/candidate/${answer.id}_icon.png`"></div>
                   <div class="ans_text">{{ answer.content }}</div>
               </div>
           </div>
